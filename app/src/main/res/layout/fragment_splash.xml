@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#afa">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/Text.H1"
+        android:text="@string/splash_tv_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_small"
+        android:layout_marginBottom="@dimen/margin_vertical_normal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/b_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Button.Accent"
+            android:text="@string/b_login" />
+
+        <Button
+            android:id="@+id/b_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_tiny"
+            style="@style/Button.Base"
+            android:text="@string/b_register" />
+
+    </LinearLayout>
+
+</FrameLayout>
