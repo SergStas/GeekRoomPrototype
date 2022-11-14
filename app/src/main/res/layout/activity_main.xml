@@ -8,4 +8,4 @@
     app:navGraph="@navigation/nav_splash"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true"
-    tools:context=".MainActivity" />
+    tools:context=".ui.MainActivity" />

@@ -1,7 +1,8 @@
-package com.example.geekroomprototype
+package com.example.geekroomprototype.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.geekroomprototype.R
 
 class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
