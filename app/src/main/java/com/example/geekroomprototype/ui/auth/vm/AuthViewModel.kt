@@ -1,4 +1,4 @@
-package com.example.geekroomprototype.ui.splash.vm
+package com.example.geekroomprototype.ui.auth.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,7 +16,7 @@ import com.example.domain.usecases.register.models.RegistrationResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor(
+class AuthViewModel @Inject constructor(
     private val loginUseCase: ILoginUseCase,
     private val registerUseCase: IRegistrationUseCase,
     private val getUserUseCase: IGetLoggedInUserUseCase,

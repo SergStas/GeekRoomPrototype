@@ -2,7 +2,7 @@ package com.example.geekroomprototype.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.geekroomprototype.ui.splash.vm.SplashViewModel
+import com.example.geekroomprototype.ui.auth.vm.AuthViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -15,8 +15,8 @@ import kotlin.reflect.KClass
 abstract class ViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(SplashViewModel::class)
-    abstract fun bindMainViewModel(mainViewModel: SplashViewModel): ViewModel
+    @ViewModelKey(AuthViewModel::class)
+    abstract fun bindMainViewModel(mainViewModel: AuthViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

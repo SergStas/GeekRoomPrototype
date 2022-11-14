@@ -3,4 +3,6 @@
     <string name="splash_tv_title"><![CDATA[<geek_room/>]]></string>
     <string name="b_login">Login</string>
     <string name="b_register">Register</string>
+    <string name="auth_et_username_hint">Username</string>
+    <string name="auth_et_password_hint">Password</string>
 </resources>

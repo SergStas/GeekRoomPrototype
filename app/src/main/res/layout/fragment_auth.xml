@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/margin_horizontal_small"
+    android:paddingVertical="@dimen/margin_vertical_normal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.auth.AuthFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <EditText
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        style="@style/Text.H4"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/c1"
+        android:hint="@string/auth_et_username_hint"
+        android:autofillHints="username"
+        android:inputType="text"
+        android:padding="@dimen/margin_horizontal_small" />
+
+    <EditText
+        android:id="@+id/tv_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        style="@style/Text.H4"
+        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        android:layout_marginVertical="@dimen/margin_horizontal_small"
+        android:textColor="@color/c1"
+        android:hint="@string/auth_et_password_hint"
+        android:autofillHints="username"
+        android:inputType="textPassword"
+        android:padding="@dimen/margin_horizontal_small" />
+
+    <Button
+        android:id="@+id/b_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Button.Base"
+        app:layout_constraintTop_toBottomOf="@id/tv_password"
+        tools:text="Login"
+        android:paddingVertical="@dimen/margin_vertical_small"
+        android:layout_marginTop="@dimen/margin_horizontal_small" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

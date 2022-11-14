@@ -9,6 +9,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Text.H2">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.H4">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="Text.H5">
         <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>

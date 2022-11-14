@@ -28,7 +28,9 @@ class AuthRepo @Inject constructor(
                 if (registrationData.username in names) {
                     RegistrationResult.Error("Username is occupied")
                 } else if (registrationData.username.length < 4) {
-                    RegistrationResult.Error("Password must be at least 4 characters")
+                    RegistrationResult.Error("Username must be at least 4 characters")
+                } else if (registrationData.password.length < 8) {
+                    RegistrationResult.Error("Password must be at least 8 characters")
                 } else {
                     userDao.save(registrationData.toDbEntity())
                     setLoggedInUser(registrationData.toDbEntity().toUserData())
