@@ -68,10 +68,12 @@ class AuthRepo @Inject constructor(
         )
     }
 
-    private fun setLoggedInUser(userData: UserData) {
+    override suspend fun logout() = setLoggedInUser(null)
+
+    private fun setLoggedInUser(userData: UserData?) {
         sharedPreferences.edit()
-            .putString(USER_NAME_KEY, userData.username)
-            .putString(USER_AVATAR_KEY, userData.avatarUrl)
+            .putString(USER_NAME_KEY, userData?.username)
+            .putString(USER_AVATAR_KEY, userData?.avatarUrl)
             .apply()
     }
 }

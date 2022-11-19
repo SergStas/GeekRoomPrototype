@@ -10,3 +10,6 @@ val Fragment.viewModelFactory
 
 fun Fragment.toast(msg: String) =
     requireContext().toast(msg)
+
+fun Fragment.toastInDevelopment() =
+    requireContext().toastInDevelopment()

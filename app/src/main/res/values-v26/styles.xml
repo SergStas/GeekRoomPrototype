@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Button.Base">
+        <item name="android:backgroundTint">@color/c1</item>
+        <item name="android:textColor">@color/FontColor.Accent</item>
+        <item name="android:paddingVertical">@dimen/margin_vertical_small</item>
+    </style>
+
+    <style name="Button.Accent">
+        <item name="android:backgroundTint">@color/c2</item>
+        <item name="android:textColor">@color/FontColor</item>
+        <item name="android:paddingVertical">@dimen/margin_vertical_small</item>
+    </style>
+</resources>

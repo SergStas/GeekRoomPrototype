@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/nav_feed"
+        android:icon="@drawable/ic_feed"
+        android:title="@string/menu_nav_main_menu_feed" />
+
+    <item
+        android:id="@id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_nav_main_menu_search" />
+
+    <item
+        android:id="@id/nav_messenger"
+        android:icon="@drawable/ic_messenger"
+        android:title="@string/menu_nav_main_menu_messenger" />
+
+    <item
+        android:id="@id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/menu_nav_main_menu_profile" />
+</menu>

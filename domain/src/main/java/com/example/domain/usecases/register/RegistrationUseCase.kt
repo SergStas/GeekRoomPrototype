@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class RegistrationUseCase @Inject constructor(
     private val repo: IAuthRepo,
-): IRegistrationUseCase {
-    override suspend fun invoke(args: RegistrationArgs) = repo.register(args.regData)
+) {
+    suspend operator fun invoke(args: RegistrationArgs) = repo.register(args.regData)
 }

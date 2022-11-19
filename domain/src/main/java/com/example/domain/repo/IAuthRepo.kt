@@ -11,4 +11,6 @@ interface IAuthRepo {
     suspend fun login(data: AuthData): LoginResult
 
     suspend fun getUser(): UserData?
+
+    suspend fun logout()
 }

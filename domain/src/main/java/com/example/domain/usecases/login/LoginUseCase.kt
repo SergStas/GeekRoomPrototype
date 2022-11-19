@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
     private val authRepo: IAuthRepo,
-): ILoginUseCase {
-    override suspend fun invoke(args: LoginArgs) = authRepo.login(args.authData)
+) {
+    suspend operator fun invoke(args: LoginArgs) = authRepo.login(args.authData)
 }

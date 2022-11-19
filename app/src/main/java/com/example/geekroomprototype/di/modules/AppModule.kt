@@ -9,7 +9,6 @@ import dagger.Provides
     DeviceStorageModule::class,
     RoomModule::class,
     ViewModelModule::class,
-    UseCaseModule::class,
     RepoModule::class,
 ])
 class AppModule(private val app: App) {

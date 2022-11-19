@@ -5,4 +5,12 @@
     <string name="b_register">Register</string>
     <string name="auth_et_username_hint">Username</string>
     <string name="auth_et_password_hint">Password</string>
+    <string name="menu_nav_main_menu_feed">Feed</string>
+    <string name="menu_nav_main_menu_search">Search</string>
+    <string name="menu_nav_main_menu_messenger">Messenger</string>
+    <string name="menu_nav_main_menu_profile">Profile</string>
+    <string name="cd_profile_iv_avatar">Change avatar</string>
+    <string name="profile_b_logout">Logout</string>
+    <string name="toast_in_development">Feature in development</string>
+    <string name="tv_content_is_loading">. . .</string>
 </resources>
