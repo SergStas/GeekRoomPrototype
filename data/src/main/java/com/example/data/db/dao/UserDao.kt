@@ -11,8 +11,11 @@ interface UserDao {
     suspend fun getAll(): List<UserEntity>
 
     @Insert
-    suspend fun save(entity: UserEntity)
+    suspend fun create(entity: UserEntity): Long
 
     @Query("select * from users where username = :username")
     suspend fun getByName(username: String): List<UserEntity>
+
+    @Query("select * from users where id = :id")
+    suspend fun getById(id: Long): List<UserEntity>
 }

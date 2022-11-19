@@ -19,4 +19,10 @@ class RoomModule {
 
     @Provides
     fun provideUserDao(db: GeekRoomDb) = db.userDao()
+
+    @Provides
+    fun provideArticleDao(db: GeekRoomDb) = db.articleDao()
+
+    @Provides
+    fun provideLikesDao(db: GeekRoomDb) = db.likesDao()
 }

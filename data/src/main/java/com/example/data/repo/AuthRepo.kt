@@ -32,7 +32,7 @@ class AuthRepo @Inject constructor(
                 } else if (registrationData.password.length < 8) {
                     RegistrationResult.Error("Password must be at least 8 characters")
                 } else {
-                    userDao.save(registrationData.toDbEntity())
+                    userDao.create(registrationData.toDbEntity())
                     setLoggedInUser(registrationData.toDbEntity().toUserData())
                     RegistrationResult.Success
                 }
