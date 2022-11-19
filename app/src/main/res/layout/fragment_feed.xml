@@ -34,6 +34,16 @@
         android:text="@string/feed_tv_fresh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb_fresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/rv_fresh"
+        app:layout_constraintEnd_toEndOf="@id/rv_fresh"
+        app:layout_constraintTop_toTopOf="@id/rv_fresh"
+        app:layout_constraintBottom_toBottomOf="@id/rv_fresh"
+        android:visibility="gone"/>
     
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_fresh"

@@ -3,6 +3,7 @@ package com.example.geekroomprototype.di.modules
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.geekroomprototype.ui.auth.vm.AuthViewModel
+import com.example.geekroomprototype.ui.feed.FeedViewModel
 import com.example.geekroomprototype.ui.feed.articles.NewArticleViewModel
 import com.example.geekroomprototype.ui.profile.ProfileViewModel
 import dagger.Binds
@@ -24,6 +25,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProfileViewModel::class)
     abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FeedViewModel::class)
+    abstract fun bindFeedViewModel(viewModel: FeedViewModel): ViewModel
 
     @Binds
     @IntoMap

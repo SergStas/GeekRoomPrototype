@@ -7,7 +7,7 @@ import com.example.data.db.entities.ArticleEntity
 
 @Dao
 interface ArticleDao {
-    @Query("select * from articles order by creationDate limit :limit")
+    @Query("select * from articles order by creationDate desc limit :limit")
     suspend fun getLastCreated(limit: Int): List<ArticleEntity>
 
     @Insert

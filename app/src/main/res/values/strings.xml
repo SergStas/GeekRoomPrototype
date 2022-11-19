@@ -18,4 +18,12 @@
     <string name="new_article_et_title_hint">Title of your article</string>
     <string name="new_article_et_content_hint">Content...</string>
     <string name="new_article_b_publish">Publish</string>
+    <string name="listitem_article_likes_ph">%s likes</string>
+    <string name="listitem_article_date_ph_sec">%d seconds ago</string>
+    <string name="listitem_article_date_ph_minutes">%d minutes ago</string>
+    <string name="listitem_article_date_ph_hours">%d hours ago</string>
+    <string name="listitem_article_date_ph_days">%d days ago</string>
+    <string name="listitem_article_date_ph_weeks">%d weeks ago</string>
+    <string name="listitem_article_date_ph_months">%d months ago</string>
+    <string name="listitem_article_date_ph_years">%d years ago</string>
 </resources>
