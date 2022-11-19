@@ -9,4 +9,6 @@ interface IArticleRepo {
     suspend fun getLastArticles(limit: Int = 10): List<ArticleData>
 
     suspend fun getTrendingArticles(limit: Int = 10): List<ArticleData>
+
+    suspend fun getUserArticles(user: UserData): List<ArticleData>
 }

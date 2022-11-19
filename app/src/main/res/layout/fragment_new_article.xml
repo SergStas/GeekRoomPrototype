@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.feed.articles.NewArticleFragment"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal"
+    android:paddingVertical="@dimen/screen_padding_vertical">
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/EditText"
+        android:hint="@string/new_article_et_title_hint"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
+        android:autofillHints="no" />
+
+    <com.google.android.material.card.MaterialCardView
+        app:layout_constraintTop_toBottomOf="@id/et_title"
+        app:layout_constraintBottom_toTopOf="@id/b_publish"
+        android:layout_marginBottom="@dimen/margin_vertical_small"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit_text_bg"
+        android:elevation="0dp"
+        app:strokeColor="@color/c1"
+        app:strokeWidth="2dp"
+        app:cardCornerRadius="0dp"
+        android:layout_marginTop="@dimen/margin_vertical_small"
+        app:contentPadding="@dimen/margin_horizontal_small">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Text.H4"
+            android:hint="@string/new_article_et_content_hint"
+            app:layout_constraintTop_toBottomOf="@id/et_title"
+            android:inputType="textMultiLine"
+            android:autofillHints="no" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/b_publish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Button.Base"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/new_article_b_publish" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

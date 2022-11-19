@@ -9,6 +9,7 @@ import com.example.domain.models.UserData
 data class ArticleEntity(
     val title: String,
     val imageUrl: String,
+    val authorAvatarUrl: String,
     val content: String,
     val authorId: Long,
     val creationDate: Long,
@@ -20,7 +21,8 @@ data class ArticleEntity(
         fun ArticleData.toDbEntity(authorId: Long) =
             ArticleEntity(
                 title = title,
-                imageUrl = imageUrl,
+                imageUrl = "",
+                authorAvatarUrl = imageUrl,
                 content = content,
                 authorId = authorId,
                 creationDate = creationDate,

@@ -13,4 +13,9 @@
     <string name="profile_b_logout">Logout</string>
     <string name="toast_in_development">Feature in development</string>
     <string name="tv_content_is_loading">. . .</string>
+    <string name="feed_tv_fresh">Fresh articles</string>
+    <string name="cd_b_new_article">New article</string>
+    <string name="new_article_et_title_hint">Title of your article</string>
+    <string name="new_article_et_content_hint">Content...</string>
+    <string name="new_article_b_publish">Publish</string>
 </resources>

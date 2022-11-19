@@ -3,6 +3,11 @@
     <style name="Text">
         <item name="android:textColor">@color/FontColor</item>
     </style>
+
+    <style name="EditText" parent="Text.H4">
+        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:padding">@dimen/margin_horizontal_small</item>
+    </style>
     
     <style name="Text.H1">
         <item name="android:textSize">46sp</item>
@@ -14,14 +19,34 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="Text.H3">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Text.H4">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="Text.H5">
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.H6">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.H7">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.H8">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="Button" parent="Text.H5"/>

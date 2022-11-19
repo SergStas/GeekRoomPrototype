@@ -18,7 +18,7 @@ class ArticlesRepo @Inject constructor(
     private val articleDao: ArticleDao,
     private val userDao: UserDao,
 ): IArticleRepo {
-    override suspend fun createArticle(user: UserData, articleData: ArticleData) {
+    override suspend fun createArticle(user: UserData, articleData: ArticleData) =
         withContext(Dispatchers.IO) {
             val authorId = userDao.getByName(user.username)[0].id
             val entity = articleData.toDbEntity(authorId)
@@ -28,7 +28,6 @@ class ArticlesRepo @Inject constructor(
                 likesDao.create(UserArticleLikeEntity(userId, articleId))
             }
         }
-    }
 
     override suspend fun getLastArticles(limit: Int) =
         withContext(Dispatchers.IO) {
@@ -43,8 +42,15 @@ class ArticlesRepo @Inject constructor(
             entities.map { mapArticleEntityToDomainData(it) }
         }
 
+    override suspend fun getUserArticles(user: UserData) =
+        withContext(Dispatchers.IO) {
+            val userId = userDao.getByName(user.username)[0].id
+            val entities = articleDao.getByUserId(userId)
+            entities.map { mapArticleEntityToDomainData(it) }
+        }
+
     private suspend fun mapArticleEntityToDomainData(article: ArticleEntity): ArticleData {
-        val author = userDao.getByName(article.title)[0].toUserData()
+        val author = userDao.getById(article.authorId)[0].toUserData()
         val likes = likesDao.getLikesForArticle(article.id).map {
             userDao.getById(it.userId)[0].toUserData()
         }

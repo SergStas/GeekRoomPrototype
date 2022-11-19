@@ -13,6 +13,9 @@ interface ArticleDao {
     @Insert
     suspend fun create(articleEntity: ArticleEntity): Long
 
+    @Query("select * from articles where authorId = :userId")
+    suspend fun getByUserId(userId: Long): List<ArticleEntity>
+
     @Query("delete from articles where authorId = :authorId and title = :title")
     suspend fun deleteByTitleAndAuthor(title: String, authorId: Long)
 

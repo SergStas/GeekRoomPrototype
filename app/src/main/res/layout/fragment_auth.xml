@@ -12,28 +12,24 @@
         android:id="@+id/tv_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        style="@style/Text.H4"
+        style="@style/EditText"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/c1"
         android:hint="@string/auth_et_username_hint"
         android:autofillHints="username"
-        android:inputType="text"
-        android:padding="@dimen/margin_horizontal_small" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/tv_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        style="@style/Text.H4"
+        style="@style/EditText"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
         android:layout_marginVertical="@dimen/margin_horizontal_small"
         android:textColor="@color/c1"
         android:hint="@string/auth_et_password_hint"
         android:autofillHints="username"
-        android:inputType="textPassword"
-        android:padding="@dimen/margin_horizontal_small" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/b_confirm"

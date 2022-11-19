@@ -3,7 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#b48"
-    tools:context=".ui.feed.FeedFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.feed.FeedFragment"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal"
+    android:paddingVertical="@dimen/screen_padding_vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/b_new_article"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:contentPadding="@dimen/margin_horizontal_small"
+        app:cardBackgroundColor="@color/c3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/cd_b_new_article" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_fresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Text.H5"
+        android:text="@string/feed_tv_fresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fresh"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/feed_rv_fresh_height"
+        android:orientation="horizontal"
+        tools:listitem="@layout/listitem_article"
+        app:layout_constraintTop_toBottomOf="@id/tv_fresh"
+        android:layout_marginTop="@dimen/margin_vertical_small" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

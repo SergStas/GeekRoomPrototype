@@ -13,7 +13,7 @@ import com.example.data.db.entities.UserEntity
     UserEntity::class,
     ArticleEntity::class,
     UserArticleLikeEntity::class,
-], version = 3)
+], version = 4)
 abstract class GeekRoomDb: RoomDatabase() {
     abstract fun userDao(): UserDao
 
