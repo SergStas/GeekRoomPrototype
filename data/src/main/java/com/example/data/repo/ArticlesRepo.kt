@@ -3,9 +3,9 @@ package com.example.data.repo
 import com.example.data.db.dao.ArticleDao
 import com.example.data.db.dao.LikesDao
 import com.example.data.db.dao.UserDao
-import com.example.data.db.entities.ArticleEntity
 import com.example.data.db.entities.ArticleEntity.Companion.toDbEntity
 import com.example.data.db.entities.UserArticleLikeEntity
+import com.example.data.db.mapping.EntityMapper
 import com.example.domain.models.ArticleData
 import com.example.domain.models.UserData
 import com.example.domain.repo.IArticleRepo
@@ -17,6 +17,7 @@ class ArticlesRepo @Inject constructor(
     private val likesDao: LikesDao,
     private val articleDao: ArticleDao,
     private val userDao: UserDao,
+    private val mapper: EntityMapper,
 ): IArticleRepo {
     override suspend fun createArticle(user: UserData, articleData: ArticleData) =
         withContext(Dispatchers.IO) {
@@ -32,31 +33,20 @@ class ArticlesRepo @Inject constructor(
     override suspend fun getLastArticles(limit: Int) =
         withContext(Dispatchers.IO) {
             val entities = articleDao.getLastCreated(limit)
-            entities.map { mapArticleEntityToDomainData(it) }
+            entities.map { mapper.mapArticleEntity(it) }
         }
 
     override suspend fun getTrendingArticles(limit: Int) =
         withContext(Dispatchers.IO) {
             val articleIds = likesDao.getTopArticles(limit)
             val entities = articleIds.map { articleDao.getById(it)[0] }
-            entities.map { mapArticleEntityToDomainData(it) }
+            entities.map { mapper.mapArticleEntity(it) }
         }
 
     override suspend fun getUserArticles(user: UserData) =
         withContext(Dispatchers.IO) {
             val userId = userDao.getByName(user.username)[0].id
             val entities = articleDao.getByUserId(userId)
-            entities.map { mapArticleEntityToDomainData(it) }
+            entities.map { mapper.mapArticleEntity(it) }
         }
-
-    private suspend fun mapArticleEntityToDomainData(article: ArticleEntity): ArticleData {
-        val author = userDao.getById(article.authorId)[0].toUserData()
-        val likes = likesDao.getLikesForArticle(article.id).map {
-            userDao.getById(it.userId)[0].toUserData()
-        }
-        return article.toDomainData(
-            author = author,
-            likedUsers = likes,
-        )
-    }
 }
