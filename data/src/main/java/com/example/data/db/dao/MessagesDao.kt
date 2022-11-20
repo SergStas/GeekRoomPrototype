@@ -8,7 +8,7 @@ import com.example.data.db.entities.MessageReadEntity
 
 @Dao
 interface MessagesDao {
-    @Query("select * from messages where chatId = :chatId")
+    @Query("select * from messages where chatId = :chatId order by sentTime desc")
     suspend fun getMessagesForChat(chatId: Long): List<MessageEntity>
 
     @Insert

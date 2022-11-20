@@ -10,6 +10,7 @@ import com.example.domain.usecases.feed.article.QueryLastArticlesUseCase
 import com.example.domain.usecases.feed.article.QueryTrendingArticlesUseCase
 import com.example.geekroomprototype.R
 import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
+import com.example.geekroomprototype.util.extensions.formatDate
 import com.example.geekroomprototype.util.extensions.toastInDevelopment
 import kotlinx.coroutines.launch
 import java.lang.Long.max
@@ -60,22 +61,9 @@ class FeedViewModel @Inject constructor(
             authorName = article.author.username,
             authorTag = article.author.username,
             likesCount = article.likedUsers.size,
-            creationDateToken = formatDate(article.creationDate),
+            creationDateToken = formatDate(context, article.creationDate),
             onOpen = ::onOpenArticle,
         )
-
-    private fun formatDate(ts: Long): String {
-        val seconds = max((System.currentTimeMillis() - ts) / 1000, 1)
-        return when {
-            seconds < 60 -> context.getString(R.string.listitem_article_date_ph_sec).format(seconds)
-            seconds < 60 * 60 -> context.getString(R.string.listitem_article_date_ph_minutes).format(seconds / 60)
-            seconds < 60 * 60 * 24 -> context.getString(R.string.listitem_article_date_ph_hours).format(seconds / 60 / 60)
-            seconds < 60 * 60 * 24 * 7 -> context.getString(R.string.listitem_article_date_ph_days).format(seconds / 60 / 60 / 24)
-            seconds < 60 * 60 * 24 * 7 * 30 -> context.getString(R.string.listitem_article_date_ph_weeks).format(seconds / 60 / 60 / 24 / 7)
-            seconds < 60 * 60 * 24 * 7 * 30 * 12 -> context.getString(R.string.listitem_article_date_ph_months).format(seconds / 60 / 60 / 24 / 7 / 30)
-            else -> context.getString(R.string.listitem_article_date_ph_years).format(seconds / 60 / 60 / 24 / 7 / 30 / 12)
-        }
-    }
 
     sealed class ArticlesLoadingState {
         object Loading: ArticlesLoadingState()

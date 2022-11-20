@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="@dimen/margin_vertical_small"
+    android:background="@drawable/box_corners_grey"
+    android:paddingHorizontal="@dimen/margin_horizontal_small">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_avatar"
+        android:layout_width="@dimen/listitem_chat_preview_bar_avatar_size"
+        android:layout_height="@dimen/listitem_chat_preview_bar_avatar_size"
+        app:cardCornerRadius="@dimen/listitem_chat_preview_bar_avatar_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/avatar_ph"
+            android:contentDescription="@null" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_date"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_small"
+        style="@style/Text.H5"
+        app:layout_constraintVertical_weight="1"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mollis augue sit amet enim sollicitudin, sit amet cursus quam hendrerit. Etiam elementum sit amet dolor in laoreet. In ultrices ac nisi sit amet tincidunt. In laoreet, leo et tempus feugiat, nisi dui pellentesque mauris, sit amet euismod quam diam at purus. Vestibulum consectetur tempus elit, a condimentum magna tincidunt vel. Mauris dictum velit ut leo dignissim elementum. Curabitur porta porttitor sem. Nam pellentesque ullamcorper dui sit amet cursus. Suspendisse dui odio, vulputate ac pellentesque ut, semper non urna. Sed malesuada luctus velit vel mollis. Nullam ex lacus, blandit vitae arcu at, bibendum malesuada ex. Fusce aliquet, quam at ornare interdum, turpis justo fermentum diam, in tempus lacus lacus a diam. Donec ut nibh eget nisi dignissim bibendum eu nec ipsum. Nam fermentum molestie risus, venenatis aliquet nulla vestibulum pharetra."
+        android:lines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/card_avatar"
+        app:layout_constraintTop_toTopOf="@id/card_avatar"
+        app:layout_constraintBottom_toTopOf="@id/tv_content"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_date"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_small"
+        style="@style/Text.H6"
+        app:layout_constraintVertical_weight="2"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mollis augue sit amet enim sollicitudin, sit amet cursus quam hendrerit. Etiam elementum sit amet dolor in laoreet. In ultrices ac nisi sit amet tincidunt. In laoreet, leo et tempus feugiat, nisi dui pellentesque mauris, sit amet euismod quam diam at purus. Vestibulum consectetur tempus elit, a condimentum magna tincidunt vel. Mauris dictum velit ut leo dignissim elementum. Curabitur porta porttitor sem. Nam pellentesque ullamcorper dui sit amet cursus. Suspendisse dui odio, vulputate ac pellentesque ut, semper non urna. Sed malesuada luctus velit vel mollis. Nullam ex lacus, blandit vitae arcu at, bibendum malesuada ex. Fusce aliquet, quam at ornare interdum, turpis justo fermentum diam, in tempus lacus lacus a diam. Donec ut nibh eget nisi dignissim bibendum eu nec ipsum. Nam fermentum molestie risus, venenatis aliquet nulla vestibulum pharetra."
+        app:layout_constraintStart_toEndOf="@id/card_avatar"
+        android:lines="2"
+        android:ellipsize="end"
+        app:layout_constraintBottom_toBottomOf="@id/card_avatar"
+        app:layout_constraintTop_toBottomOf="@id/tv_username"/>
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_notificator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="@id/tv_date"
+        app:layout_constraintStart_toStartOf="@id/tv_date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:contentPadding="2dp"
+        app:cardBackgroundColor="@color/FontColor">
+        
+        <TextView
+            android:id="@+id/tv_notificator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Text.H10"
+            android:textColor="@color/FontColor.Accent"
+            tools:text="12" />
+        
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="12 feb"
+        android:textColor="@color/c3"
+        style="@style/Text.H10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

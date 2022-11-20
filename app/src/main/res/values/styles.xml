@@ -5,7 +5,7 @@
     </style>
 
     <style name="EditText" parent="Text.H4">
-        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:background">@drawable/box_corners</item>
         <item name="android:padding">@dimen/margin_horizontal_small</item>
     </style>
     
@@ -46,6 +46,16 @@
 
     <style name="Text.H8">
         <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.H9">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.H10">
+        <item name="android:textSize">10sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 

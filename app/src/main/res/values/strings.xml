@@ -26,4 +26,6 @@
     <string name="listitem_article_date_ph_weeks">%d weeks ago</string>
     <string name="listitem_article_date_ph_months">%d months ago</string>
     <string name="listitem_article_date_ph_years">%d years ago</string>
+    <string name="messenger_tv_no_chats">You have no chats</string>
+    <string name="cd_b_new_chat">New chat</string>
 </resources>

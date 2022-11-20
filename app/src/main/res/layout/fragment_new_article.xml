@@ -24,7 +24,7 @@
         android:layout_marginBottom="@dimen/margin_vertical_small"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/box_corners"
         android:elevation="0dp"
         app:strokeColor="@color/c1"
         app:strokeWidth="2dp"
