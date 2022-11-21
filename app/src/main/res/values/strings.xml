@@ -28,4 +28,6 @@
     <string name="listitem_article_date_ph_years">%d years ago</string>
     <string name="messenger_tv_no_chats">You have no chats</string>
     <string name="cd_b_new_chat">New chat</string>
+    <string name="new_chat_tv_title_hint">Title of new chat</string>
+    <string name="new_chat_b_create">Create chat</string>
 </resources>

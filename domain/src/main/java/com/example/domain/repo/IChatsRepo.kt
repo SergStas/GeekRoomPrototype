@@ -7,4 +7,6 @@ interface IChatsRepo {
     suspend fun getUserChats(userData: UserData): List<ChatData>
 
     suspend fun getPopularChats(limit: Int = 10): List<ChatData>
+
+    suspend fun createChat(user: UserData, participants: List<UserData>)
 }

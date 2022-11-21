@@ -1,4 +1,4 @@
-package com.example.geekroomprototype.ui.messenger.viewholders
+package com.example.geekroomprototype.ui.messenger.vh
 
 import androidx.core.view.isVisible
 import com.example.geekroomprototype.databinding.ListitemChatPreviewBarBinding

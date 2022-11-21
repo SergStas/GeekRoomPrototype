@@ -2,6 +2,7 @@ package com.example.geekroomprototype.util.extensions
 
 import android.content.Context
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.example.geekroomprototype.App
 import com.example.geekroomprototype.R
 
@@ -13,3 +14,6 @@ fun Context.toast(msg: String) =
 
 fun Context.toastInDevelopment() =
     toast(getString(R.string.toast_in_development))
+
+fun Context.colorFromId(colorId: Int) =
+    ResourcesCompat.getColor(resources, colorId, null)

@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.geekroomprototype.R
 import com.example.geekroomprototype.databinding.FragmentMessengerBinding
 import com.example.geekroomprototype.databinding.ListitemChatPreviewBarBinding
 import com.example.geekroomprototype.ui.abstractions.BaseFragment
 import com.example.geekroomprototype.ui.messenger.models.MessengerChatBarItem
-import com.example.geekroomprototype.ui.messenger.viewholders.MessengerChatBarViewHolder
-import com.example.geekroomprototype.util.extensions.toastInDevelopment
+import com.example.geekroomprototype.ui.messenger.vh.MessengerChatBarViewHolder
 import com.example.geekroomprototype.util.extensions.viewModelFactory
 import com.example.geekroomprototype.util.rv.BaseAdapter
 
@@ -34,7 +34,7 @@ class MessengerFragment: BaseFragment(R.layout.fragment_messenger) {
 
     private fun setView() {
         binding.bNew.setOnClickListener {
-            toastInDevelopment()
+            toChatCreationPage()
         }
     }
 
@@ -62,4 +62,7 @@ class MessengerFragment: BaseFragment(R.layout.fragment_messenger) {
             bindToRv(binding.rvChats)
         }
     }
+
+    private fun toChatCreationPage() =
+        findNavController().navigate(R.id.action_messengerFragment_to_newChatFragment)
 }

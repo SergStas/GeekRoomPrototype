@@ -18,7 +18,10 @@ interface ChatsDao {
     suspend fun getChatParticipants(chatId: Long): List<ParticipantEntity>
 
     @Insert
-    suspend fun createChat(chat: ChatEntity)
+    suspend fun createChat(chat: ChatEntity): Long
+
+    @Query("select * from chats where title = :title")
+    suspend fun getChatByTitle(title: String): List<ChatEntity>
 
     @Insert
     suspend fun addParticipant(participant: ParticipantEntity)

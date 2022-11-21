@@ -6,6 +6,7 @@ import com.example.geekroomprototype.ui.auth.vm.AuthViewModel
 import com.example.geekroomprototype.ui.feed.FeedViewModel
 import com.example.geekroomprototype.ui.feed.articles.NewArticleViewModel
 import com.example.geekroomprototype.ui.messenger.MessengerViewModel
+import com.example.geekroomprototype.ui.messenger.newchat.NewChatViewModel
 import com.example.geekroomprototype.ui.profile.ProfileViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -36,6 +37,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MessengerViewModel::class)
     abstract fun bindMessengerViewModel(viewModel: MessengerViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewChatViewModel::class)
+    abstract fun binNewChatViewModel(viewModel: NewChatViewModel): ViewModel
 
     @Binds
     @IntoMap

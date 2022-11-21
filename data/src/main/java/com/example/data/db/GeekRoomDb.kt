@@ -13,7 +13,7 @@ import com.example.data.db.entities.*
     MessageEntity::class,
     MessageReadEntity::class,
     ParticipantEntity::class,
-], version = 5)
+], version = 6)
 abstract class GeekRoomDb: RoomDatabase() {
     abstract fun userDao(): UserDao
 
