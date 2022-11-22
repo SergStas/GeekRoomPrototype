@@ -6,10 +6,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.domain.models.ChatData
 import com.example.geekroomprototype.R
 import com.example.geekroomprototype.databinding.FragmentMessengerBinding
 import com.example.geekroomprototype.databinding.ListitemChatPreviewBarBinding
 import com.example.geekroomprototype.ui.abstractions.BaseFragment
+import com.example.geekroomprototype.ui.messenger.chat.ChatFragmentArgs
 import com.example.geekroomprototype.ui.messenger.models.MessengerChatBarItem
 import com.example.geekroomprototype.ui.messenger.vh.MessengerChatBarViewHolder
 import com.example.geekroomprototype.util.extensions.viewModelFactory
@@ -40,6 +42,12 @@ class MessengerFragment: BaseFragment(R.layout.fragment_messenger) {
 
     private fun subscribe() =
         viewModel.run {
+            chatToOpen.observe(viewLifecycleOwner) {
+                when (it) {
+                    is MessengerViewModel.OpenChatState.Open -> openChat(it.chat)
+                    MessengerViewModel.OpenChatState.Waiting -> {}
+                }
+            }
             chats.observe(viewLifecycleOwner) {
                 when(it) {
                     is MessengerViewModel.State.Loaded -> {
@@ -54,6 +62,12 @@ class MessengerFragment: BaseFragment(R.layout.fragment_messenger) {
                 }
             }
         }
+
+    private fun openChat(chat: ChatData) =
+        findNavController().navigate(
+            resId = R.id.action_messengerFragment_to_chatFragment,
+            args = ChatFragmentArgs(chat).toBundle(),
+        )
 
     private fun setAdapter() {
         adapter = BaseAdapter.create { MessengerChatBarViewHolder(

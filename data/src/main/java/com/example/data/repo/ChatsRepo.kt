@@ -4,8 +4,12 @@ import com.example.data.db.dao.ChatsDao
 import com.example.data.db.dao.MessagesDao
 import com.example.data.db.dao.UserDao
 import com.example.data.db.entities.ChatEntity
+import com.example.data.db.entities.MessageEntity
+import com.example.data.db.entities.MessageReadEntity
 import com.example.data.db.entities.ParticipantEntity
 import com.example.data.db.mapping.EntityMapper
+import com.example.domain.models.ChatData
+import com.example.domain.models.MessageData
 import com.example.domain.models.UserData
 import com.example.domain.repo.IChatsRepo
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +19,7 @@ import javax.inject.Inject
 class ChatsRepo @Inject constructor(
     private val chatsDao: ChatsDao,
     private val userDao: UserDao,
+    private val messagesDao: MessagesDao,
     private val mapper: EntityMapper,
 ): IChatsRepo {
     override suspend fun getUserChats(userData: UserData) =
@@ -42,6 +47,31 @@ class ChatsRepo @Inject constructor(
         allUsers.forEach {
             val userId = userDao.getByName(it.username)[0].id
             chatsDao.addParticipant(ParticipantEntity(userId, chatId))
+        }
+    }
+
+    override suspend fun getMessagesForChat(chatData: ChatData) =
+        messagesDao.getMessagesForChat(
+            chatsDao.getChatByTitle(chatData.title)[0].id,
+        ).map {
+            mapper.mapMessageEntity(it)
+        }
+
+    override suspend fun createMessage(chatData: ChatData, messageData: MessageData, sender: UserData) {
+        val chatId = chatsDao.getChatByTitle(chatData.title)[0].id
+        val senderId = userDao.getByName(sender.username)[0].id
+        val entity = MessageEntity(
+            chatId,
+            senderId,
+            messageData.content,
+            messageData.sentTime,
+        )
+        val messageId = messagesDao.create(entity)
+        messageData.readUsers.forEach {
+            val readUserId = userDao.getByName(it.username)[0].id
+            messagesDao.readMessage(
+                MessageReadEntity(messageId, readUserId)
+            )
         }
     }
 }

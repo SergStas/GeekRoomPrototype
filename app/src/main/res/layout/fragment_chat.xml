@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal"
+    android:paddingVertical="@dimen/screen_padding_vertical"
+    tools:context=".ui.messenger.chat.ChatFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Text.H2"
+        tools:text="Name of chat"
+        android:background="@drawable/box_corners"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingHorizontal="@dimen/screen_padding_vertical"
+        android:lines="1"
+        android:ellipsize="end" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="2dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/margin_tiny"
+        app:layout_constraintBottom_toTopOf="@id/b_send"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:listitem="@layout/listitem_chat_message"/>
+
+    <Button
+        android:id="@+id/b_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Button.Base"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/chat_b_send" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/b_send"
+        app:layout_constraintBottom_toBottomOf="@id/b_send"
+        app:layout_constraintTop_toTopOf="@id/b_send"
+        style="@style/EditText"
+        android:hint="@string/chat_et_message_hint"
+        android:autofillHints="no"
+        android:inputType="text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

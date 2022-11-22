@@ -12,7 +12,7 @@ interface MessagesDao {
     suspend fun getMessagesForChat(chatId: Long): List<MessageEntity>
 
     @Insert
-    suspend fun create(message: MessageEntity)
+    suspend fun create(message: MessageEntity): Long
 
     @Query("select * from read_messages where messageId = :messageId")
     suspend fun getMessageReadUsers(messageId: Long): List<MessageReadEntity>

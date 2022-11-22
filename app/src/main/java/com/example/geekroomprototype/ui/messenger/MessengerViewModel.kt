@@ -22,6 +22,9 @@ class MessengerViewModel @Inject constructor(
     private val _chats = MutableLiveData<State>(State.Loading)
     val chats: LiveData<State> get() = _chats
 
+    private val _chatToOpen = MutableLiveData<OpenChatState>(OpenChatState.Waiting)
+    val chatToOpen: LiveData<OpenChatState> get() = _chatToOpen
+
     fun loadChats() {
         viewModelScope.launch {
             _chats.value = State.Loaded(queryUserChats().map { mapToRvItem(it) } )
@@ -29,7 +32,11 @@ class MessengerViewModel @Inject constructor(
     }
 
     private fun onOpen(item: MessengerChatBarItem) {
-        context.toastInDevelopment()
+        viewModelScope.launch {
+            val chat = queryUserChats().first { it.title == item.title }
+            _chatToOpen.value = OpenChatState.Open(chat)
+            _chatToOpen.value = OpenChatState.Waiting
+        }
     }
 
     private suspend fun mapToRvItem(data: ChatData) =
@@ -46,5 +53,10 @@ class MessengerViewModel @Inject constructor(
     sealed class State {
         object Loading: State()
         data class Loaded(val chats: List<MessengerChatBarItem>): State()
+    }
+
+    sealed class OpenChatState {
+        object Waiting: OpenChatState()
+        data class Open(val chat: ChatData): OpenChatState()
     }
 }

@@ -13,4 +13,5 @@
     <dimen name="listitem_article_author_avatar_size">34dp</dimen>
     <dimen name="feed_rv_fresh_height">380dp</dimen>
     <dimen name="listitem_chat_preview_bar_avatar_size">54dp</dimen>
+    <dimen name="chat_message_corner_radius">12dp</dimen>
 </resources>

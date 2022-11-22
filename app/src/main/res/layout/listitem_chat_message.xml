@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/margin_horizontal_small">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_avatar_left"
+        android:layout_width="@dimen/listitem_article_author_avatar_size"
+        android:layout_height="@dimen/listitem_article_author_avatar_size"
+        app:cardCornerRadius="@dimen/listitem_article_author_avatar_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_avatar_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/avatar_ph"
+            android:contentDescription="@null" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_avatar_right"
+        android:layout_width="@dimen/listitem_article_author_avatar_size"
+        android:layout_height="@dimen/listitem_article_author_avatar_size"
+        app:cardCornerRadius="@dimen/listitem_article_author_avatar_size"
+        tools:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_avatar_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/avatar_ph"
+            android:contentDescription="@null" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/card_avatar_left"
+        app:layout_constraintEnd_toStartOf="@+id/card_avatar_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:contentPadding="@dimen/margin_vertical_small"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_small"
+        app:cardBackgroundColor="@color/c4"
+        app:cardCornerRadius="@dimen/chat_message_corner_radius">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut imperdiet erat. Sed a faucibus lectus, in maximus neque. Phasellus ipsum odio, euismod sit amet pellentesque fringilla, maximus eu nisl. Duis venenatis enim in ex pretium posuere. Nam porta, nisl eu pulvinar eleifend, massa lacus mattis metus, vel facilisis leo lectus eget orci. Praesent bibendum pretium eleifend. Quisque volutpat turpis eros, vel consequat leo mollis sed. Donec non pulvinar turpis, vitae commodo dui. Quisque sit amet justo vel nibh suscipit pulvinar. Maecenas condimentum ornare varius. Integer nibh diam, pellentesque sed aliquam a, ultricies id risus. Curabitur hendrerit id augue faucibus vulputate. Donec turpis diam, condimentum ac tempor feugiat, pulvinar a eros. Vivamus mattis massa nibh, id aliquam eros scelerisque in. Sed bibendum bibendum tortor, nec facilisis ante egestas eu.
+Curabitur bibendum, urna in cursus hendrerit, massa lacus volutpat tellus, nec dapibus augue nisl sed leo. Morbi condimentum est at sem eleifend sodales. Ut vulputate ligula ac quam dictum, sed mollis enim vehicula.
+Sed id ipsum eget ligula mollis malesuada et sit amet tortor. Proin rutrum luctus dolor quis semper. Etiam aliquet enim ut magna lobortis luctus. Duis condimentum facilisis blandit. Mauris vitae luctus elit. Etiam quis ornare enim. Nulla vitae maximus lorem. Nulla in sem commodo, efficitur magna scelerisque, auctor est. Sed sapien orci, lobortis at eros et, gravida rhoncus turpis.
+Sed ac dui vitae leo gravida iaculis eget vitae mauris. Aenean eget auctor eros. Nam luctus lacus ut felis convallis accumsan. Vestibulum lobortis facilisis augue, non laoreet turpis rhoncus in. Vivamus tristique arcu id pharetra fringilla. Vivamus hendrerit quis leo eget tincidunt. Fusce mattis magna nisl, sed sollicitudin metus convallis in. Duis nec metus maximus, vestibulum turpis finibus, dignissim nisl. Vivamus nec elit sed dui porta rhoncus. Nam lorem ipsum, imperdiet vitae laoreet sed, mollis ac risus. Maecenas dapibus sapien eget erat scelerisque tempus. Quisque sollicitudin arcu sed orci mollis maximus. Nam et scelerisque nibh.
+Fusce scelerisque quam augue, et ultrices orci eleifend a. Quisque id eleifend purus. Nulla pretium ligula a velit viverra, ac congue lorem tincidunt. Vestibulum ut tincidunt ipsum. Sed dui mauris, tincidunt in est ac, euismod porttitor erat. Ut in arcu tincidunt erat accumsan pretium in a tellus. Donec mollis, ipsum sed molestie consequat, erat arcu aliquet diam, eu interdum augue dui vestibulum dolor. Integer euismod auctor ex vitae efficitur. Sed scelerisque velit turpis, pellentesque laoreet diam ullamcorper quis. Sed auctor pretium egestas. In eget urna efficitur, tincidunt nibh ac, tempor odio. Fusce iaculis pellentesque dolor id elementum. Sed ut lectus in dolor tincidunt venenatis. Aenean maximus ante at odio cursus laoreet. Phasellus a feugiat est, a lacinia turpis. Quisque semper leo sit amet congue faucibus.
+Aliquam a sem euismod, consectetur lorem sit amet, ullamcorper quam. Praesent in augue ultrices, blandit ipsum in, mollis nisi. Proin cursus, nulla ut condimentum facilisis, turpis velit facilisis sem, consequat placerat odio ipsum nec urna. Donec facilisis aliquet ligula in mollis. Ut lacinia nisl eget facilisis efficitur. Quisque imperdiet tortor lorem, sit amet ornare elit feugiat dignissim. Donec bibendum consequat purus at suscipit."
+            style="@style/Text.H3" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,3 +17,6 @@ fun Context.toastInDevelopment() =
 
 fun Context.colorFromId(colorId: Int) =
     ResourcesCompat.getColor(resources, colorId, null)
+
+fun Context.drawableFromId(drawableId: Int) =
+    ResourcesCompat.getDrawable(resources, drawableId, null)

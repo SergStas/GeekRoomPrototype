@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_messengerFragment_to_newChatFragment"
             app:destination="@id/newChatFragment" />
+        <action
+            android:id="@+id/action_messengerFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/newChatFragment"
         android:name="com.example.geekroomprototype.ui.messenger.newchat.NewChatFragment"
         android:label="fragment_new_chat"
         tools:layout="@layout/fragment_new_chat" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.geekroomprototype.ui.messenger.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="chat"
+            app:argType="com.example.domain.models.ChatData" />
+    </fragment>
 </navigation>
