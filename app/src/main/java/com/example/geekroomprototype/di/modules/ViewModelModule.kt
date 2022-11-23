@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.geekroomprototype.ui.auth.vm.AuthViewModel
 import com.example.geekroomprototype.ui.feed.FeedViewModel
-import com.example.geekroomprototype.ui.feed.articles.NewArticleViewModel
+import com.example.geekroomprototype.ui.feed.articles.ReadArticleViewModel
+import com.example.geekroomprototype.ui.feed.articles.create.NewArticleViewModel
 import com.example.geekroomprototype.ui.messenger.MessengerViewModel
 import com.example.geekroomprototype.ui.messenger.chat.ChatViewModel
 import com.example.geekroomprototype.ui.messenger.newchat.NewChatViewModel
@@ -43,6 +44,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewChatViewModel::class)
     abstract fun bindNewChatViewModel(viewModel: NewChatViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ReadArticleViewModel::class)
+    abstract fun bindReadArticleViewModel(viewModel: ReadArticleViewModel): ViewModel
 
     @Binds
     @IntoMap

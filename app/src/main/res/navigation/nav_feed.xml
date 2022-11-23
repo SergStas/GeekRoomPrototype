@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/newArticleFragment"
-        android:name="com.example.geekroomprototype.ui.feed.articles.NewArticleFragment"
+        android:name="com.example.geekroomprototype.ui.feed.articles.create.NewArticleFragment"
         android:label="fragment_new_article"
         tools:layout="@layout/fragment_new_article" />
 </navigation>
