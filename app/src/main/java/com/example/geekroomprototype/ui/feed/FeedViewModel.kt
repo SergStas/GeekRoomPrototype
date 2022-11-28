@@ -8,12 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.models.ArticleData
 import com.example.domain.usecases.feed.article.QueryLastArticlesUseCase
 import com.example.domain.usecases.feed.article.QueryTrendingArticlesUseCase
-import com.example.geekroomprototype.R
 import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
-import com.example.geekroomprototype.util.extensions.formatDate
-import com.example.geekroomprototype.util.extensions.toastInDevelopment
 import kotlinx.coroutines.launch
-import java.lang.Long.max
 import javax.inject.Inject
 
 class FeedViewModel @Inject constructor(
@@ -27,19 +23,25 @@ class FeedViewModel @Inject constructor(
     private val _freshArticles = MutableLiveData<ArticlesLoadingState>(ArticlesLoadingState.Loading)
     val freshArticles: LiveData<ArticlesLoadingState> get() = _freshArticles
 
+    private val _openArticleState = MutableLiveData<OpenArticleState>(OpenArticleState.None)
+    val openArticleState: LiveData<OpenArticleState> get() = _openArticleState
+
     fun loadDigest() {
         loadFreshArticles()
         loadTrendingArticles()
     }
 
     private fun onOpenArticle(article: FreshArticleRvItem) {
-        context.toastInDevelopment()
+        _openArticleState.value = OpenArticleState.Article(article.toDomain())
+        _openArticleState.value = OpenArticleState.None
     }
 
     private fun loadFreshArticles() {
         viewModelScope.launch {
             _freshArticles.value = ArticlesLoadingState.Fetched(
-                queryLastArticles().map(::mapToFreshArticleItem),
+                queryLastArticles().map {
+                    FreshArticleRvItem.fromDomain(it, context, ::onOpenArticle)
+                },
             )
         }
     }
@@ -47,26 +49,19 @@ class FeedViewModel @Inject constructor(
     private fun loadTrendingArticles() {
         viewModelScope.launch {
             _trendingArticles.value = ArticlesLoadingState.Fetched(
-                queryTrendingArticles().map(::mapToFreshArticleItem),
+                queryTrendingArticles().map {
+                    FreshArticleRvItem.fromDomain(it, context, ::onOpenArticle)
+                },
             )
         }
     }
-
-    private fun mapToFreshArticleItem(article: ArticleData) =
-        FreshArticleRvItem(
-            title = article.title,
-            imageUrl = article.imageUrl,
-            content = article.content,
-            authorAvatarUrl = article.author.avatarUrl,
-            authorName = article.author.username,
-            authorTag = article.author.username,
-            likesCount = article.likedUsers.size,
-            creationDateToken = formatDate(context, article.creationDate),
-            onOpen = ::onOpenArticle,
-        )
-
     sealed class ArticlesLoadingState {
         object Loading: ArticlesLoadingState()
         data class Fetched(val content: List<FreshArticleRvItem>): ArticlesLoadingState()
+    }
+
+    sealed class OpenArticleState {
+        object None: OpenArticleState()
+        data class Article(val article: ArticleData): OpenArticleState()
     }
 }

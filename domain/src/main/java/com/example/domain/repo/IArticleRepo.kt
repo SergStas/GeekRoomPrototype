@@ -11,4 +11,6 @@ interface IArticleRepo {
     suspend fun getTrendingArticles(limit: Int = 10): List<ArticleData>
 
     suspend fun getUserArticles(user: UserData): List<ArticleData>
+
+    suspend fun setArticleLike(articleData: ArticleData, value: Boolean, user: UserData)
 }

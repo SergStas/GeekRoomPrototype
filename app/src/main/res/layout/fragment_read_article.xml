@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.feed.articles.ReadArticleFragment"
     android:paddingHorizontal="@dimen/screen_padding_horizontal"
     android:paddingVertical="@dimen/screen_padding_vertical">
 
@@ -90,7 +91,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_likes"
                 style="@style/Text.H7"
                 android:textColor="@color/c3"
-                tools:text="0 shares" />
+                android:text="0 shares" />
 
             <TextView
                 android:id="@+id/tv_comments"
@@ -103,7 +104,7 @@
                 android:layout_marginEnd="@dimen/margin_tiny"
                 style="@style/Text.H7"
                 android:textColor="@color/c3"
-                tools:text="0 comments" />
+                android:text="0 comments" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_author_avatar"

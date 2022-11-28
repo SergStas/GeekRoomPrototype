@@ -21,4 +21,7 @@ interface ArticleDao {
 
     @Query("select * from articles where id = :articleId")
     suspend fun getById(articleId: Long): List<ArticleEntity>
+
+    @Query("select * from articles where authorId = :authorId and title = :title")
+    suspend fun getByTitleAndId(title: String, authorId: Long): List<ArticleEntity>
 }

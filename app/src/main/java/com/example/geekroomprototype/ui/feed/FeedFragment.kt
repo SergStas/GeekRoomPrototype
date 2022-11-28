@@ -7,10 +7,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.domain.models.ArticleData
 import com.example.geekroomprototype.R
 import com.example.geekroomprototype.databinding.FragmentFeedBinding
 import com.example.geekroomprototype.databinding.ListitemArticleBinding
 import com.example.geekroomprototype.ui.abstractions.BaseFragment
+import com.example.geekroomprototype.ui.feed.articles.ReadArticleFragmentArgs
 import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
 import com.example.geekroomprototype.ui.feed.vh.FreshArticleViewHolder
 import com.example.geekroomprototype.util.extensions.viewModelFactory
@@ -50,6 +52,12 @@ class FeedFragment: BaseFragment(R.layout.fragment_feed) {
 
     private fun subscribe() {
         viewModel.run {
+            openArticleState.observe(viewLifecycleOwner) {
+                when (it) {
+                    is FeedViewModel.OpenArticleState.Article -> toArticleDetailsPage(it.article)
+                    FeedViewModel.OpenArticleState.None -> {}
+                }
+            }
             freshArticles.observe(viewLifecycleOwner) {
                 when (it) {
                     is FeedViewModel.ArticlesLoadingState.Fetched -> {
@@ -72,6 +80,12 @@ class FeedFragment: BaseFragment(R.layout.fragment_feed) {
             }
         }
     }
+
+    private fun toArticleDetailsPage(article: ArticleData) =
+        findNavController().navigate(
+            resId = R.id.action_feedFragment_to_readArticleFragment,
+            args = ReadArticleFragmentArgs(article).toBundle(),
+        )
 
     private fun toNewArticlePage() =
         findNavController().navigate(R.id.action_feedFragment_to_newArticleFragment)

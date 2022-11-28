@@ -49,4 +49,15 @@ class ArticlesRepo @Inject constructor(
             val entities = articleDao.getByUserId(userId)
             entities.map { mapper.mapArticleEntity(it) }
         }
+
+    override suspend fun setArticleLike(articleData: ArticleData, value: Boolean, user: UserData) {
+        val authorId = userDao.getByName(articleData.author.username)[0].id
+        val articleId = articleDao.getByTitleAndId(articleData.title, authorId)[0].id
+        val userId = userDao.getByName(user.username)[0].id
+        if (value) {
+            likesDao.create(UserArticleLikeEntity(userId = userId, articleId = articleId))
+        } else {
+            likesDao.deleteByIds(userId = userId, articleId = articleId)
+        }
+    }
 }

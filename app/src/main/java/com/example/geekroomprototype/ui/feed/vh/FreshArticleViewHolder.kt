@@ -15,7 +15,7 @@ class FreshArticleViewHolder(
             tvTitle.text = item.title
             tvContent.text = item.content
             tvLikes.text = context.getString(R.string.listitem_article_likes_ph).format(item.likesCount.toString())
-            tvAuthorTag.text = item.authorTag
+            tvAuthorTag.text = context.getString(R.string.author_tag_ph).format(item.authorTag)
             root.setOnClickListener { item.onOpen(item) }
         }
     }
