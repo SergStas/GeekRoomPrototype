@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_date"
         app:layout_constraintStart_toStartOf="@id/tv_date"
         app:layout_constraintTop_toTopOf="parent"
-        app:contentPadding="2dp"
+        app:contentPadding="6dp"
         app:cardBackgroundColor="@color/FontColor">
         
         <TextView

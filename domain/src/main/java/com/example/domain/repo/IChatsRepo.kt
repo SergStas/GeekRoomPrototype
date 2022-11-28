@@ -14,4 +14,6 @@ interface IChatsRepo {
     suspend fun getMessagesForChat(chatData: ChatData): List<MessageData>
 
     suspend fun createMessage(chatData: ChatData, messageData: MessageData, sender: UserData)
+
+    suspend fun readMessage(message: MessageData, user: UserData)
 }

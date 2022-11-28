@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.ChatData
+import com.example.domain.models.UserData
 import com.example.domain.usecases.login.GetLoggedInUserUseCase
 import com.example.domain.usecases.messenger.QueryUserChatsUseCase
 import com.example.geekroomprototype.ui.messenger.models.MessengerChatBarItem
 import com.example.geekroomprototype.util.extensions.formatDate
-import com.example.geekroomprototype.util.extensions.toastInDevelopment
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +27,11 @@ class MessengerViewModel @Inject constructor(
 
     fun loadChats() {
         viewModelScope.launch {
-            _chats.value = State.Loaded(queryUserChats().map { mapToRvItem(it) } )
+            _chats.value = State.Loaded(
+                queryUserChats()
+                    .sortedByDescending { chat -> chat.messages.maxOf { it.sentTime } }
+                    .map { mapToRvItem(it) },
+            )
         }
     }
 
@@ -39,16 +43,20 @@ class MessengerViewModel @Inject constructor(
         }
     }
 
-    private suspend fun mapToRvItem(data: ChatData) =
-        MessengerChatBarItem(
+    private suspend fun mapToRvItem(data: ChatData): MessengerChatBarItem {
+        val user = getLoggedInUser()!!
+        return MessengerChatBarItem(
             title = data.title,
             avatarUrl = data.avatarUrl,
-            lastMessageContent = data.messages.firstOrNull()?.content ?: "",
-            unreadCount = data.messages.count { getLoggedInUser() in it.readUsers },
+            lastMessageContent = data.messages.firstOrNull()?.content ?: "[NO MESSAGES YET]",
+            unreadCount = data.messages.count {
+                user.username !in it.readUsers.map(UserData::username)
+            },
             lastMessageDateToken = data.messages.firstOrNull()?.sentTime
                 ?.let { formatDate(context, it) } ?: "",
             onOpen = ::onOpen,
         )
+    }
 
     sealed class State {
         object Loading: State()

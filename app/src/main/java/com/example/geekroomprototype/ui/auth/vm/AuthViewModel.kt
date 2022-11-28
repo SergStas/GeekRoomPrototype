@@ -21,15 +21,12 @@ class AuthViewModel @Inject constructor(
     private val registerUseCase: RegistrationUseCase,
     private val getUserUseCase: GetLoggedInUserUseCase,
 ): ViewModel() {
-    private val _user = MutableLiveData<UserData?>(null)
-    val user: LiveData<UserData?> get() = _user
-
-    private val _errMsg = MutableLiveData<String?>(null)
-    val errMsg: LiveData<String?> get() = _errMsg
+    private val _state = MutableLiveData<State>(State.No)
+    val state: LiveData<State> get() = _state
 
     fun loadUser() {
         viewModelScope.launch {
-            _user.value = getUserUseCase()
+            _state.value = getUserUseCase()?.run { State.Yes(this) } ?: State.No
         }
     }
 
@@ -37,7 +34,7 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch {
             when (val result = loginUseCase(LoginArgs(AuthData(username, password)))) {
                 is LoginResult.Error ->
-                    _errMsg.value = result.msg
+                    _state.value = State.Error(result.msg)
                 LoginResult.Success ->
                     loadUser()
             }
@@ -47,11 +44,20 @@ class AuthViewModel @Inject constructor(
     fun register(username: String, password: String) {
         viewModelScope.launch {
             when (val result = registerUseCase(RegistrationArgs(AuthData(username, password)))) {
-                is RegistrationResult.Error ->
-                    _errMsg.value = result.msg
+                is RegistrationResult.Error -> {
+                    val prevState = _state.value!!
+                    _state.value = State.Error(result.msg)
+                    _state.value = prevState
+                }
                 RegistrationResult.Success ->
                     loadUser()
             }
         }
+    }
+
+    sealed class State {
+        object No: State()
+        data class Error(val msg: String): State()
+        data class Yes(val user: UserData): State()
     }
 }

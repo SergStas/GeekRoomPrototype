@@ -74,4 +74,11 @@ class ChatsRepo @Inject constructor(
             )
         }
     }
+
+    override suspend fun readMessage(message: MessageData, user: UserData) {
+        val userId = userDao.getByName(user.username)[0].id
+        val authorId = userDao.getByName(message.sender.username)[0].id
+        val messageId = messagesDao.getMessageBySenderAndDate(authorId, message.sentTime)[0].id
+        messagesDao.readMessage(MessageReadEntity(messageId, userId))
+    }
 }

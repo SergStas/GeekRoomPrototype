@@ -31,14 +31,11 @@ class SplashFragment: Fragment(R.layout.fragment_splash) {
 
     private fun subscribe() {
         viewModel.run {
-            user.observe(viewLifecycleOwner) {
-                if (it != null) {
-                    toMainPage()
-                }
-            }
-            errMsg.observe(viewLifecycleOwner) {
-                if (it != null) {
-                    toast(it)
+            state.observe(viewLifecycleOwner) {
+                when(it) {
+                    is AuthViewModel.State.Error -> toast(it.msg)
+                    AuthViewModel.State.No -> {}
+                    is AuthViewModel.State.Yes -> toMainPage()
                 }
             }
         }

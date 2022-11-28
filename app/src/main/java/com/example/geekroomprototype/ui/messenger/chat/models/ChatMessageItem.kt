@@ -6,4 +6,6 @@ data class ChatMessageItem(
     val message: String,
     val isSelf: Boolean,
     val senderAvatarUrl: String,
+    val senderName: String?,
+    val isRead: Boolean?,
 ): IRvItem

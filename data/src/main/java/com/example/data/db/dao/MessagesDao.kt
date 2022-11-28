@@ -17,6 +17,9 @@ interface MessagesDao {
     @Query("select * from read_messages where messageId = :messageId")
     suspend fun getMessageReadUsers(messageId: Long): List<MessageReadEntity>
 
+    @Query("select * from messages where sentTime = :date and senderId = :senderId")
+    suspend fun getMessageBySenderAndDate(senderId: Long, date: Long): List<MessageEntity>
+
     @Insert
     suspend fun readMessage(messageReadEntity: MessageReadEntity)
 }

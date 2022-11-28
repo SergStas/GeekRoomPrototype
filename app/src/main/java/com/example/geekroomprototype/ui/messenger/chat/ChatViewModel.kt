@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.ChatData
 import com.example.domain.models.MessageData
+import com.example.domain.models.UserData
+import com.example.domain.usecases.feed.article.MarkMessageAsReadUseCase
 import com.example.domain.usecases.login.GetLoggedInUserUseCase
 import com.example.domain.usecases.messenger.chat.CreateMessageUseCase
 import com.example.domain.usecases.messenger.chat.GetMessagesForChatUseCase
@@ -17,6 +19,7 @@ class ChatViewModel @Inject constructor(
     private val getMessagesForChat: GetMessagesForChatUseCase,
     private val getLoggedInUser: GetLoggedInUserUseCase,
     private val createMessage: CreateMessageUseCase,
+    private val markMessageAsRead: MarkMessageAsReadUseCase,
 ): ViewModel() {
     private val _state = MutableLiveData<State>(State.Waiting)
     val state: LiveData<State> get() = _state
@@ -31,7 +34,7 @@ class ChatViewModel @Inject constructor(
             chat = chatData
             _title.value = chatData.title
             _state.value = State.Loading
-            val messages = getMessagesForChat(chatData)
+            val messages = getAndReadMessages()
             _state.value = State.Loaded(messages.map { mapToItem(it) }.reversed())
         }
     }
@@ -49,12 +52,32 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    private suspend fun mapToItem(messageData: MessageData) =
-        ChatMessageItem(
+    private suspend fun getAndReadMessages(): List<MessageData> {
+        val user = getLoggedInUser()!!
+        getMessagesForChat(chat!!).forEach {
+            if (user.username !in it.readUsers.map(UserData::username)) {
+                markMessageAsRead(it)
+            }
+        }
+        return getMessagesForChat(chat!!)
+    }
+
+    private suspend fun mapToItem(messageData: MessageData): ChatMessageItem {
+        val user = getLoggedInUser()!!
+        val isSelf = messageData.sender.username == user.username
+        val senderName = messageData.sender.username.takeIf { chat!!.isGroup }
+        val isRead = messageData.readUsers
+            .map(UserData::username)
+            .any { it != user.username }
+            .takeIf { isSelf }
+        return ChatMessageItem(
             message = messageData.content,
-            isSelf = messageData.sender.username == getLoggedInUser()!!.username,
+            isSelf = isSelf,
             senderAvatarUrl = messageData.sender.avatarUrl,
+            senderName = senderName,
+            isRead = isRead,
         )
+    }
 
     sealed class State {
         object Waiting: State()

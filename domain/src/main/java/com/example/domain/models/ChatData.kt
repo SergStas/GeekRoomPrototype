@@ -9,4 +9,6 @@ data class ChatData(
     val avatarUrl: String,
     val participants: List<UserData>,
     val messages: List<MessageData>,
-): Parcelable
+): Parcelable {
+    val isGroup get() = participants.size > 2
+}

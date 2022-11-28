@@ -15,7 +15,7 @@ class MessengerChatBarViewHolder(
             tvDate.text = item.lastMessageDateToken
             tvUsername.text = item.title
             tvNotificator.text = item.unreadCount.toString()
-            tvNotificator.isVisible = item.unreadCount > 0
+            cardNotificator.isVisible = item.unreadCount > 0
         }
     }
 }
