@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.feed.articles.NewArticleFragment"
+    tools:context=".ui.feed.articles.create.NewArticleFragment"
     android:paddingHorizontal="@dimen/screen_padding_horizontal"
     android:paddingVertical="@dimen/screen_padding_vertical">
 

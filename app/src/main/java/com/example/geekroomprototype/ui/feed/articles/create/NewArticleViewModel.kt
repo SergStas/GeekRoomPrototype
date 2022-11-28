@@ -1,4 +1,4 @@
-package com.example.geekroomprototype.ui.feed.articles
+package com.example.geekroomprototype.ui.feed.articles.create
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

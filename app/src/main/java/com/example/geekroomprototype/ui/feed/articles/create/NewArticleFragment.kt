@@ -1,4 +1,4 @@
-package com.example.geekroomprototype.ui.feed.articles
+package com.example.geekroomprototype.ui.feed.articles.create
 
 import android.os.Bundle
 import android.view.View
