@@ -29,7 +29,13 @@ class MessengerViewModel @Inject constructor(
         viewModelScope.launch {
             _chats.value = State.Loaded(
                 queryUserChats()
-                    .sortedByDescending { chat -> chat.messages.maxOf { it.sentTime } }
+                    .sortedByDescending { chat ->
+                        if (chat.messages.isEmpty()) {
+                            System.currentTimeMillis()
+                        } else {
+                            chat.messages.maxOf { it.sentTime }
+                        }
+                    }
                     .map { mapToRvItem(it) },
             )
         }
