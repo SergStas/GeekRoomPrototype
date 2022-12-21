@@ -3,12 +3,16 @@ package com.example.data.db.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.data.db.entities.ArticleEntity
 
 @Dao
 interface ArticleDao {
     @Query("select * from articles order by creationDate desc limit :limit")
     suspend fun getLastCreated(limit: Int): List<ArticleEntity>
+
+    @Update
+    suspend fun updateArticle(articleEntity: ArticleEntity)
 
     @Insert
     suspend fun create(articleEntity: ArticleEntity): Long

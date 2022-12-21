@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/screen_padding_vertical"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal">
+
+    <EditText
+        android:id="@+id/et_url"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        style="@style/EditText"
+        android:inputType="textUri"
+        android:hint="Avatar URL" />
+
+    <Button
+        android:id="@+id/b_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_tiny"
+        style="@style/Button.Base"
+        android:text="Submit" />
+
+</LinearLayout>

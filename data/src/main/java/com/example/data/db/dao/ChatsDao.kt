@@ -3,6 +3,7 @@ package com.example.data.db.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.data.db.entities.ChatEntity
 import com.example.data.db.entities.ParticipantEntity
 
@@ -10,6 +11,9 @@ import com.example.data.db.entities.ParticipantEntity
 interface ChatsDao {
     @Query("select * from chats")
     suspend fun getAll(): List<ChatEntity>
+
+    @Update
+    suspend fun updateChat(chatEntity: ChatEntity)
 
     @Query("select * from participants where userId = :userId")
     suspend fun getUserParticipating(userId: Long): List<ParticipantEntity>
