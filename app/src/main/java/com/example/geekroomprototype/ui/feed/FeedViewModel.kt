@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.models.ArticleData
 import com.example.domain.usecases.feed.article.QueryLastArticlesUseCase
 import com.example.domain.usecases.feed.article.QueryTrendingArticlesUseCase
-import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
+import com.example.geekroomprototype.ui.feed.models.ArticlePreviewFreshListItem
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,7 +31,7 @@ class FeedViewModel @Inject constructor(
         loadTrendingArticles()
     }
 
-    private fun onOpenArticle(article: FreshArticleRvItem) {
+    private fun onOpenArticle(article: ArticlePreviewFreshListItem) {
         _openArticleState.value = OpenArticleState.Article(article.toDomain())
         _openArticleState.value = OpenArticleState.None
     }
@@ -40,7 +40,7 @@ class FeedViewModel @Inject constructor(
         viewModelScope.launch {
             _freshArticles.value = ArticlesLoadingState.Fetched(
                 queryLastArticles().map {
-                    FreshArticleRvItem.fromDomain(it, context, ::onOpenArticle)
+                    ArticlePreviewFreshListItem.fromDomain(it, context, ::onOpenArticle)
                 },
             )
         }
@@ -50,14 +50,14 @@ class FeedViewModel @Inject constructor(
         viewModelScope.launch {
             _trendingArticles.value = ArticlesLoadingState.Fetched(
                 queryTrendingArticles().map {
-                    FreshArticleRvItem.fromDomain(it, context, ::onOpenArticle)
+                    ArticlePreviewFreshListItem.fromDomain(it, context, ::onOpenArticle)
                 },
             )
         }
     }
     sealed class ArticlesLoadingState {
         object Loading: ArticlesLoadingState()
-        data class Fetched(val content: List<FreshArticleRvItem>): ArticlesLoadingState()
+        data class Fetched(val content: List<ArticlePreviewFreshListItem>): ArticlesLoadingState()
     }
 
     sealed class OpenArticleState {

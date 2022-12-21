@@ -10,6 +10,7 @@ import com.example.geekroomprototype.ui.messenger.MessengerViewModel
 import com.example.geekroomprototype.ui.messenger.chat.ChatViewModel
 import com.example.geekroomprototype.ui.messenger.newchat.NewChatViewModel
 import com.example.geekroomprototype.ui.profile.ProfileViewModel
+import com.example.geekroomprototype.ui.search.vm.SearchViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -49,6 +50,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ReadArticleViewModel::class)
     abstract fun bindReadArticleViewModel(viewModel: ReadArticleViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    abstract fun bindSearchViewModel(viewModel: SearchViewModel): ViewModel
 
     @Binds
     @IntoMap

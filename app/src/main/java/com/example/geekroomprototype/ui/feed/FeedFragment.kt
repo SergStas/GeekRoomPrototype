@@ -13,7 +13,7 @@ import com.example.geekroomprototype.databinding.FragmentFeedBinding
 import com.example.geekroomprototype.databinding.ListitemArticleBinding
 import com.example.geekroomprototype.ui.abstractions.BaseFragment
 import com.example.geekroomprototype.ui.feed.articles.ReadArticleFragmentArgs
-import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
+import com.example.geekroomprototype.ui.feed.models.ArticlePreviewFreshListItem
 import com.example.geekroomprototype.ui.feed.vh.FreshArticleViewHolder
 import com.example.geekroomprototype.util.extensions.viewModelFactory
 import com.example.geekroomprototype.util.rv.BaseAdapter
@@ -21,7 +21,7 @@ import com.example.geekroomprototype.util.rv.BaseAdapter
 class FeedFragment: BaseFragment(R.layout.fragment_feed) {
     private val binding by viewBinding(FragmentFeedBinding::bind)
     private val viewModel by viewModels<FeedViewModel> { viewModelFactory }
-    private lateinit var freshAdapter: BaseAdapter<FreshArticleRvItem, FreshArticleViewHolder>
+    private lateinit var freshAdapter: BaseAdapter<ArticlePreviewFreshListItem, FreshArticleViewHolder>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

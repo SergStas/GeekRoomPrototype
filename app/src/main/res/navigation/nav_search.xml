@@ -9,5 +9,18 @@
         android:id="@+id/searchFragment"
         android:name="com.example.geekroomprototype.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_readArticleFragment2"
+            app:destination="@id/readArticleFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/readArticleFragment2"
+        android:name="com.example.geekroomprototype.ui.feed.articles.ReadArticleFragment"
+        android:label="fragment_read_article"
+        tools:layout="@layout/fragment_read_article" >
+        <argument
+            android:name="article"
+            app:argType="com.example.domain.models.ArticleData" />
+    </fragment>
 </navigation>

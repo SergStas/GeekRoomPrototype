@@ -13,4 +13,6 @@ interface IArticleRepo {
     suspend fun getUserArticles(user: UserData): List<ArticleData>
 
     suspend fun setArticleLike(articleData: ArticleData, value: Boolean, user: UserData)
+
+    suspend fun search(query: String): List<ArticleData>
 }

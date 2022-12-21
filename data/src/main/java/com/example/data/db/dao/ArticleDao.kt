@@ -24,4 +24,7 @@ interface ArticleDao {
 
     @Query("select * from articles where authorId = :authorId and title = :title")
     suspend fun getByTitleAndId(title: String, authorId: Long): List<ArticleEntity>
+
+    @Query("select * from articles where title like '%' || :query || '%' or content like '%' || :query || '%'")
+    suspend fun searchByTitleAndContent(query: String): List<ArticleEntity>
 }

@@ -5,7 +5,7 @@ import com.example.domain.models.ArticleData
 import com.example.geekroomprototype.util.extensions.formatDate
 import com.example.geekroomprototype.util.rv.IRvItem
 
-data class FreshArticleRvItem(
+data class ArticlePreviewFreshListItem(
     val title: String,
     val imageUrl: String,
     val content: String,
@@ -14,7 +14,7 @@ data class FreshArticleRvItem(
     val authorTag: String,
     val likesCount: Int,
     val creationDateToken: String,
-    val onOpen: (FreshArticleRvItem) -> Unit,
+    val onOpen: (ArticlePreviewFreshListItem) -> Unit,
     val commentsCount: Int = 0,
     val sharedCount: Int = 0,
     private val domain: ArticleData,
@@ -23,8 +23,8 @@ data class FreshArticleRvItem(
         fun fromDomain(
             article: ArticleData,
             context: Context,
-            onOpen: (FreshArticleRvItem) -> Unit,
-        ) = FreshArticleRvItem(
+            onOpen: (ArticlePreviewFreshListItem) -> Unit,
+        ) = ArticlePreviewFreshListItem(
             title = article.title,
             imageUrl = article.imageUrl,
             content = article.content,

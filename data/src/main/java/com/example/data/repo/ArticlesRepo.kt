@@ -60,4 +60,8 @@ class ArticlesRepo @Inject constructor(
             likesDao.deleteByIds(userId = userId, articleId = articleId)
         }
     }
+
+    override suspend fun search(query: String): List<ArticleData> =
+        articleDao.searchByTitleAndContent(query)
+            .map { mapper.mapArticleEntity(it) }
 }

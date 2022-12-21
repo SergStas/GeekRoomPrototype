@@ -2,13 +2,13 @@ package com.example.geekroomprototype.ui.feed.vh
 
 import com.example.geekroomprototype.R
 import com.example.geekroomprototype.databinding.ListitemArticleBinding
-import com.example.geekroomprototype.ui.feed.models.FreshArticleRvItem
+import com.example.geekroomprototype.ui.feed.models.ArticlePreviewFreshListItem
 import com.example.geekroomprototype.util.rv.BaseViewHolder
 
 class FreshArticleViewHolder(
     private val binding: ListitemArticleBinding,
-): BaseViewHolder<FreshArticleRvItem>(binding.root) {
-    override fun bind(item: FreshArticleRvItem) {
+): BaseViewHolder<ArticlePreviewFreshListItem>(binding.root) {
+    override fun bind(item: ArticlePreviewFreshListItem) {
         binding.run {
             tvTime.text = item.creationDateToken
             tvAuthorName.text = item.authorName

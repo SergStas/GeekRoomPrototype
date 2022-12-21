@@ -3,7 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#40d"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/screen_padding_vertical"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal"
     tools:context=".ui.search.SearchFragment">
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/EditText"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
+        android:autofillHints="@null"
+        android:hint="Search..." />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        android:contentDescription="@null"
+        android:layout_marginEnd="@dimen/margin_horizontal_small"
+        app:layout_constraintEnd_toEndOf="@id/et_search"
+        app:layout_constraintBottom_toBottomOf="@id/et_search"
+        app:layout_constraintTop_toTopOf="@id/et_search" />
+
+    <TextView
+        android:id="@+id/tv_results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Text.H3"
+        tools:text="0 results found"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        android:layout_marginTop="@dimen/margin_tiny" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_results"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_results"
+        android:layout_marginTop="@dimen/margin_tiny"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        tools:listitem="@layout/listitem_article" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
